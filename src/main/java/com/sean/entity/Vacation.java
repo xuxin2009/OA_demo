@@ -59,6 +59,14 @@ public class Vacation implements Serializable {
     private String processInstanceId;
 
     private Integer userid;
+    /**
+     * 申请时间
+     */
+    private String applyTime;
+    /**
+     * 申请状态
+     */
+    private String applyStatus;
 
 
 }

@@ -125,18 +125,6 @@
                     menu = layui.menu;
             $(function(){
                 menu.getMenu('/json/menu.json');
-                var login = JSON.parse(localStorage.getItem("login"));
-                if(login){
-                    if(login===0){
-                        window.location.href='/login';
-                        return false;
-                    }else{
-                        return false;
-                    }
-                }else{
-                    window.location.href='/login';
-                    return false;
-                }
             });
         });
 

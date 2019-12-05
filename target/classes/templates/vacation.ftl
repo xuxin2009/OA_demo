@@ -24,10 +24,11 @@
                 <span class="we-red">*</span>请假类型
             </label>
             <div class="layui-input-inline">
-                <select name="vacationType" lay-filter="vacationType">
-                    <option value="0">带薪</option>
-                    <option value="1">病假</option>
-                    <option value="1">事假</option>
+                <select  id ="vacationType" name="vacationType" lay-filter="vacationType">
+                    <option value="0">--请选择--</option>
+                    <option value="1">带薪</option>
+                    <option value="2">病假</option>
+                    <option value="3">事假</option>
                 </select>
             </div>
         </div>
@@ -71,6 +72,34 @@
         </div>
     </form>
 </div>
+
+<div>
+    <h2 style="background-color: #1E9FFF; width: 20%">我正在申请的假</h2>
+    <table class="layui-table">
+        <tr>
+            <td>时间</td>
+            <td>天数</td>
+            <td>事由</td>
+            <td>申请状态</td>
+        </tr>
+
+   <#-- <#assign json>${vacationData}</#assign>
+        <#assign jsonData=json?eval/>
+       <#list  jsonData.data as vacations>
+            <tr>
+                <td>${vacations.applyTime!"test"}</td>
+                <td>${vacations.days!"test"}</td>
+                <td>${vacations.reason!"test"}</td>
+                <td>${vacations.applyStatus!"test"}</td>
+            </tr>
+       </#list>-->
+
+        <input type="text" id="vacationData">
+      </table>
+
+</div>
+
+
 <script src="../../lib/layui/layui.js" charset="utf-8"></script>
 
 <script type="text/javascript">
@@ -95,10 +124,12 @@
     layui.extend({
         admin: '{/}../../static/js/admin'
     });
+
     layui.use(['form','layer','admin'], function() {
         var form = layui.form,
                 admin = layui.admin,
-                $=layui.jquery,
+                $=layui.$,
+                element=layui.element,
                 layer = layui.layer;
         form.render();
 
@@ -129,21 +160,23 @@
                 data:JSON.stringify(data.field),
                 dataType:'JSON',
                 success:function(res){
+                    if(res.status==0)
+                    {
+                        $("#vacationData").val(res.data);
+                        layer.msg(res.msg);
+                       $("#vacationType").val(0);
+                        $("#beginDate").val("");
+                        $("#endDate").val("");
+                        $("#reason").val("");
 
+                    }
                 }
             });
-          //发异步，把数据提交给php
 
-            layer.alert("请假申请成功", {icon: 6},function () {
-                // 获得frame索引
-                var index = parent.layer.getFrameIndex(window.name);
-                //关闭当前frame
-                parent.layer.close(index);
-            });
             return false;
 
          });
-    })
+    });
 
 
 

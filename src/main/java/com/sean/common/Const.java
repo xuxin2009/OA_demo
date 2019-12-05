@@ -10,6 +10,7 @@ public class Const {
     public static  final String EMAIL = "email";
     public static final  String USERNAME = "userName";
 
+    public static final String VACATION_PROCESS_DEFINE_KEY="vacationProcess";
 
     public interface Role {
         int ROLE_CUSTOMER = 0;//普通用户

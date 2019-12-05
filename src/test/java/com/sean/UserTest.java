@@ -30,14 +30,23 @@ public class UserTest {
         String uuid = UUID.randomUUID().toString();
         User user = identityService.newUser(uuid);
         user.setPassword("123546");
-        user.setEmail("sean_xin@126.com");
-        user.setFirstName("sean");
-        user.setLastName("xu");
+        user.setEmail("xiaoliu@126.com");
+        user.setFirstName("张");
+        user.setLastName("小刘");
 
         identityService.saveUser(user);
 
-        User user1 = identityService.createUserQuery().userEmail("sean_xin@126.com").singleResult();
-        System.out.println("username:"+user1.getLastName()+" "+user1.getFirstName());
+         uuid = UUID.randomUUID().toString();
+         user = identityService.newUser(uuid);
+        user.setPassword("123546");
+        user.setEmail("bangzhuren@126.com");
+        user.setFirstName("张");
+        user.setLastName("小张");
+
+        identityService.saveUser(user);
+
+       /* User user1 = identityService.createUserQuery().userEmail("sean_xin@126.com").singleResult();
+        System.out.println("username:"+user1.getLastName()+" "+user1.getFirstName());*/
     }
 
     @Test

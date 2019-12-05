@@ -452,7 +452,7 @@ layui.define(['jquery', 'form', 'layer', 'element'], function(exports) {
 	 * 模拟登录
 	 * localStorage模拟登录及退出
 	 */
-	var login = localStorage.getItem('login');
+/*	var login = localStorage.getItem('login');
 	$('.loginout').click(function() {
 		login = 0;
 		localStorage.setItem('login', login);
@@ -460,7 +460,7 @@ layui.define(['jquery', 'form', 'layer', 'element'], function(exports) {
 	$('.loginin').click(function() {
 		login = 1;
 		localStorage.setItem('login', login);
-	});
+	});*/
 	
 	/*
 	 *Tab加载后刷新

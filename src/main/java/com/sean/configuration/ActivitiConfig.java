@@ -51,23 +51,10 @@ public class ActivitiConfig {
         configuration.setDatabaseSchemaUpdate("true");
         configuration.setDeploymentResources(resources);
         configuration.setDbIdentityUsed(true);
+
         return configuration.buildProcessEngine();
     }
 
-
-
-
-    @Bean
-    public ProcessEngine processEngine() throws IOException {
-        SpringProcessEngineConfiguration configuration = new SpringProcessEngineConfiguration();
-        //自动部署已有的流程文件
-        Resource[] resources = new PathMatchingResourcePatternResolver().getResources(ResourceLoader.CLASSPATH_URL_PREFIX + "processes*//*.bpmn");
-
-        configuration.setDatabaseSchemaUpdate("true");
-        configuration.setDeploymentResources(resources);
-        configuration.setDbIdentityUsed(false);
-        return configuration.buildProcessEngine();
-    }
 
     @Bean
     public IdentityService identityService(ProcessEngine processEngine)
